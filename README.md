@@ -412,6 +412,9 @@ X------
 ## 8x8 Board
 0 Solutions.
 
+## 9x9 Board
+0 Solutions.
+
 # Running
 To run the project:
 1. [Download & install the latest version of .NET Core 3.1.](https://dotnet.microsoft.com/download/dotnet-core/3.1)
