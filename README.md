@@ -411,3 +411,13 @@ X------
 
 ## 8x8 Board
 0 Solutions.
+
+# Running
+To run the project:
+1. (Download & install the latest version of .NET Core 3.1.)[https://dotnet.microsoft.com/download/dotnet-core/3.1]
+2. Execute one of the following from the project folder (the 6 may be replaced with any board size):
+  * Windows: `dotnet run -c Release -r win-x64 -- 6`
+  * Mac: `dotnet run -c Release -r osx-x64 -- 6`
+  * Linux: `dotnet run -c Release -r linux-x64 -- 6`
+
+Note that the number of combinations is a factorial of `(n * n)! / n!` so while a 6x6 board will only take a second or so, a 7x7 will take upwards of 2 minutes, an 8x8 board will take a few hours, and so on.
