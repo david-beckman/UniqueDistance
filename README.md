@@ -45,7 +45,7 @@ X--
 ## 4x4 Board
 23 Solutions:
 ```
-* X--X
+X--X
 X---
 -X--
 ----
@@ -164,7 +164,7 @@ X---
 ## 5x5 Board
 35 Solutions:
 ```
-* XX--X
+XX--X
 -----
 -X---
 -----
