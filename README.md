@@ -1,6 +1,10 @@
 ﻿# Unique Distance Problem
 [Think-Maths Unique Distance Problem](https://think-maths.co.uk/uniquedistance)
 
+Is it always possible to put n counters on an n x n grid, such that no two counters are the same distance apart?
+
+*Puzzle for Submission:* Can you place 6 counters on a 6x6 grid such that the distance between each counter is different?
+
 # Solutions
 ## 1x1 Board
 1 Solutions:
