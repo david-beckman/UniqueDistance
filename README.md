@@ -414,7 +414,7 @@ X------
 
 # Running
 To run the project:
-1. (Download & install the latest version of .NET Core 3.1.)[https://dotnet.microsoft.com/download/dotnet-core/3.1]
+1. [Download & install the latest version of .NET Core 3.1.](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 2. Execute one of the following from the project folder (the 6 may be replaced with any board size):
   * Windows: `dotnet run -c Release -r win-x64 -- 6`
   * Mac: `dotnet run -c Release -r osx-x64 -- 6`
