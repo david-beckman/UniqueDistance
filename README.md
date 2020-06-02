@@ -423,4 +423,4 @@ To run the project:
   * Mac: `dotnet run -c Release -r osx-x64 -- 6`
   * Linux: `dotnet run -c Release -r linux-x64 -- 6`
 
-Note that the number of combinations is a factorial of `(n * n)! / n!` so while a 6x6 board will only take a second or so, a 7x7 will take upwards of 2 minutes, an 8x8 board will take a few hours, and so on.
+Note that the number of combinations is a factorial of `(n * n)! / (n! * (n * n - n)!)` so while a 6x6 board will only take less than a second, a 7x7 will take upwards of a minute, an 8x8 board will take upwards of an hour, a 9x9 will take upwards of a day, a 10x10 will take upwards of a month, and so on.
