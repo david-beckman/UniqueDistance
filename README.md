@@ -1,7 +1,7 @@
 ﻿# Unique Distance Problem
 [Think-Maths Unique Distance Problem](https://think-maths.co.uk/uniquedistance)
 
-#Solutions
+# Solutions
 ## 1x1 Board
 1 Solutions:
 ```
