@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <CodeAnalysisRuleSet>UniqueDistance.ruleset</CodeAnalysisRuleSet>
     <PublishReadyToRun>true</PublishReadyToRun>
-    <!-- <PublishSingleFile>true</PublishSingleFile> -->
+    <PublishSingleFile>true</PublishSingleFile>
     <Platforms>x64</Platforms>
     <RuntimeIdentifiers>win-x64;linux-x64;osx-x64</RuntimeIdentifiers>
   </PropertyGroup>
