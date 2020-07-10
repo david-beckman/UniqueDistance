@@ -1,17 +1,41 @@
-﻿using System;
-using System.Diagnostics;
-using System.Linq;
-
+﻿//-----------------------------------------------------------------------
+// <copyright file="Program.cs" company="N/A">
+//     Copyright © 2020 David Beckman. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
 namespace UniqueDistance
 {
-    class Program
+    using System;
+    using System.Diagnostics;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Globalization;
+    using System.Linq;
+
+    using UniqueDistance.Properties;
+
+    internal static class Program
     {
-        static int Main(string[] args)
+        private enum ReturnCode
+        {
+            Success,
+            ArgumentException,
+            InternalError,
+        }
+
+        [SuppressMessage(
+            "Microsoft.Design",
+            "CA1031:DoNotCatchGeneralExceptionTypes",
+            Justification = "The main entry-points are the exception to the rule.")]
+        [SuppressMessage(
+            "SonarAnalyzer",
+            "S2221:ExceptionShouldNotBeCaughtWhenNotRequiredByCalledMethods",
+            Justification = "The main entry-points are the exception to the rule.")]
+        private static int Main(string[] args)
         {
             if (args == null || args.Length != 1 || !int.TryParse(args[0], out int size) || size <= 0)
             {
-                Console.Error.WriteLine("Must pass 1 argument: the board size");
-                return 1;
+                Console.Error.WriteLine(Resources.ConsoleMessage_MissingSize);
+                return (int)ReturnCode.ArgumentException;
             }
 
             try
@@ -23,17 +47,20 @@ namespace UniqueDistance
                  * to that limit. This will not go into effect until size >= 8.
                  */
                 var solutions = new CombinationEnumerable(size, size * size)
-                    .Batch(Int32.MaxValue)
+                    .Batch(int.MaxValue)
                     .SelectMany(batch => batch
                         .AsParallel() // 3%
                         .Select(combination => new Board(combination)) // 47%
                         .Where(board => board.AreNodesAllDifferentDistances) // 45%
-                        .Select(board => board.ToCanonicalTranslation().ToString()) // 0.1%
-                    )
+                        .Select(board => board.ToCanonicalTranslation().ToString())) // 0.1%
                     .Distinct()
                     .ToArray();
 
-                Console.WriteLine($"{size} => {solutions.Length} solution(s):");
+                Console.WriteLine(string.Format(
+                    CultureInfo.CurrentCulture,
+                    Resources.ConsoleMessageFormat_SolutionsPerSize,
+                    size,
+                    solutions.Length));
                 foreach (var solution in solutions)
                 {
                     Console.WriteLine(solution);
@@ -41,12 +68,12 @@ namespace UniqueDistance
                 }
 
                 Console.WriteLine(stopwatch.Elapsed);
-                return 0;
+                return (int)ReturnCode.Success;
             }
             catch (Exception e)
             {
                 Console.Error.WriteLine(e);
-                return 2;
+                return (int)ReturnCode.InternalError;
             }
         }
     }

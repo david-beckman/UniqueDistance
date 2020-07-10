@@ -1,21 +1,30 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-
+﻿//-----------------------------------------------------------------------
+// <copyright file="CombinationEnumerable.cs" company="N/A">
+//     Copyright © 2020 David Beckman. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
 namespace UniqueDistance
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+
+    using UniqueDistance.Properties;
+
     internal class CombinationEnumerable : IEnumerable<int[]>
     {
         public CombinationEnumerable(int size, int max, int min = 0)
         {
             if (size <= 0)
             {
-                throw new ArgumentOutOfRangeException(nameof(size), size, "Array dimensions exceeded supported range.");
+                throw new ArgumentOutOfRangeException(
+                    nameof(size), size, Resources.ExceptionMessage_ArrayTooSmallOrTooLarge);
             }
+
             var range = max - min;
             if (range < size)
             {
-                throw new ArgumentOutOfRangeException(nameof(max), max, "Max must be must be large enough such that the range is larger than the size.");
+                throw new ArgumentOutOfRangeException(nameof(max), max, Resources.ExceptionMessage_MaxTooSmall);
             }
 
             this.Size = size;
@@ -24,7 +33,9 @@ namespace UniqueDistance
         }
 
         public int Size { get; }
+
         public int Min { get; }
+
         public int Max { get; }
 
         public IEnumerator<int[]> GetEnumerator()
@@ -34,7 +45,7 @@ namespace UniqueDistance
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return GetEnumerator();
+            return this.GetEnumerator();
         }
     }
 }

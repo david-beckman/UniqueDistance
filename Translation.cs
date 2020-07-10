@@ -1,4 +1,9 @@
-﻿namespace UniqueDistance
+﻿//-----------------------------------------------------------------------
+// <copyright file="Translation.cs" company="N/A">
+//     Copyright © 2020 David Beckman. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+namespace UniqueDistance
 {
     internal enum Translation
     {
